@@ -32,13 +32,30 @@ def select_difficulty():
 
     return user_selection
 
-def test_game_start(user_selection):
-    print(f"game will start using this level {user_selection}")
+
+
+def get_word_list(user_selection):
+    """
+    This function returns the word list based on the selected difficulty level.
+    It takes the user_selection argument, which can be "Easy", "Medium", or "Hard",
+    and maps it to the corresponding word list.
+    """
+    word_lists = {
+        "Easy": easy_words,
+        "Medium": medium_words,
+        "Hard": hard_words
+    }
+
+    selected_word_list = word_lists[user_selection]
+
+    return selected_word_list
+
 
 
 def main():
     display_instructions()
     user_selection = select_difficulty()
+
     test_game_start(user_selection)
 
 
