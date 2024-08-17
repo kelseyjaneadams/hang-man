@@ -1,16 +1,17 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
-
+import random
 from words import easy_words, medium_words, hard_words
 from simple_term_menu import TerminalMenu
+
 
 def display_instructions():
     print("Welcome to Hangman!")
     print("Instructions:")
     print("1. You will be asked to choose a difficulty level: Easy, Medium, or Hard.")
     print("2. A word will be chosen based on your difficulty choice.")
-    print("3. You have a limited number of attempts to guess the letters in the word.")
+    print("3. You have 7 attempts to guess the letters in the word.")
     print("4. For each correct guess, the letter will be revealed in the word.")
     print("5. If you guess incorrectly, you will lose an attempt.")
     print("6. The game ends when you guess the word correctly or run out of attempts.")
@@ -32,9 +33,7 @@ def select_difficulty():
 
     return user_selection
 
-
-
-def get_word_list(user_selection):
+def get_word(user_selection):
     """
     This function returns the word list based on the selected difficulty level.
     It takes the user_selection argument, which can be "Easy", "Medium", or "Hard",
@@ -47,16 +46,20 @@ def get_word_list(user_selection):
     }
 
     selected_word_list = word_lists[user_selection]
+    word = random.choice(selected_word_list)
+    print(word)
+    return word.upper()
 
-    return selected_word_list
+    
 
 
 
 def main():
     display_instructions()
     user_selection = select_difficulty()
-
-    test_game_start(user_selection)
+    get_word(user_selection)
+    
+    
 
 
 
