@@ -16,5 +16,6 @@ def display_instructions():
     print("7. After the game ends, you can choose to play again or exit.")
     print("\nGood luck!\n")
 
-
+def main():
+    display_instructions()
 
