@@ -18,15 +18,28 @@ def display_instructions():
     print("\nGood luck!\n")
 
 def select_difficulty():
+    """
+    Prompts the user to select a difficulty level from a terminal menu.
+    Options: "Easy", "Medium", "Hard".
+    Returns the selected difficulty as a string.
+    """
     print("Please select your difficulty")
     options = ["Easy", "Medium", "Hard"]
     terminal_menu = TerminalMenu(options)
-    menu_entry_index = terminal_menu.show()
+    menu_entry_index = terminal_menu.show() 
+    user_selection = options[menu_entry_index]
     print(f"You have selected {options[menu_entry_index]}!")
+
+    return user_selection
+
+def test_game_start(user_selection):
+    print(f"game will start using this level {user_selection}")
+
 
 def main():
     display_instructions()
-    select_difficulty()
+    user_selection = select_difficulty()
+    test_game_start(user_selection)
 
 
 
