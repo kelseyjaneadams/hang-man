@@ -3,6 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 from words import easy_words, medium_words, hard_words
+from simple_term_menu import TerminalMenu
 
 def display_instructions():
     print("Welcome to Hangman!")
@@ -16,6 +17,17 @@ def display_instructions():
     print("7. After the game ends, you can choose to play again or exit.")
     print("\nGood luck!\n")
 
+def select_difficulty():
+    print("Please select your difficulty")
+    options = ["Easy", "Medium", "Hard"]
+    terminal_menu = TerminalMenu(options)
+    menu_entry_index = terminal_menu.show()
+    print(f"You have selected {options[menu_entry_index]}!")
+
 def main():
     display_instructions()
+    select_difficulty()
 
+
+
+main()
