@@ -56,11 +56,16 @@ def run_game(word):
     The main game loop for Hangman.
     Converts the random word into a string of letters.
     Stores user guesses.
+    Display the word as underscores initially.
     """
     word_letters = set(word)
     guessed_letters = set()
-    alphabet = set(string.ascii_uppercase)
     lives = 7
+
+    display_word = ['_' for _ in word]
+    print('Current word:', ' '.join(display_word))
+
+
 
 
 def main():
