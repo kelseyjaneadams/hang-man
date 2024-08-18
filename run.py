@@ -68,8 +68,15 @@ def run_game(word):
     while len(word_letters) > 0 and lives > 0:
        print('Current word:', ' '.join(display_word)) 
        print(f"You have {lives} attempts remaining.\n")
+
        user_guess = input("Guess a letter or the full word: ").upper()
 
+       if len(user_guess) == 1 and user_guess.isalpha():
+            if user_guess in guessed_letters:
+                print(f'You have already guessed the letter "{user_guess}". Please try again.') 
+            else:
+                guessed_letters.add(user_guess)
+                
        lives -= 1
 
 
