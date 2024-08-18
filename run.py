@@ -25,12 +25,12 @@ def select_difficulty():
     Options: "Easy", "Medium", "Hard".
     Returns the selected difficulty as a string.
     """
-    print("Please select your difficulty")
+    print("Please select your difficulty\n")
     options = ["Easy", "Medium", "Hard"]
     terminal_menu = TerminalMenu(options)
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
-    print(f"You have selected {options[menu_entry_index]}!")
+    print(f"You have selected {options[menu_entry_index]}!\n")
 
     return user_selection
 
@@ -63,7 +63,15 @@ def run_game(word):
     lives = 7
 
     display_word = ['_' for _ in word]
-    print('Current word:', ' '.join(display_word))
+    print("Let's play Hangman!\n")
+
+    while len(word_letters) > 0 and lives > 0:
+       print('Current word:', ' '.join(display_word)) 
+       print(f"You have {lives} attempts remaining.\n")
+       user_guess = input("Guess a letter or the full word: ").upper()
+
+       lives -= 1
+
 
 
 
