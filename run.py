@@ -65,6 +65,8 @@ def run_game(word):
     print("Let's play Hangman!\n")
 
     while len(word_letters) > 0 and lives > 0:
+        print(visual_hangman_lives[lives])
+
         print('Current word:', ' '.join(display_word)) 
         print('\n')
         print(f"You have {lives} attempts remaining.\n")
@@ -78,7 +80,6 @@ def run_game(word):
                 guessed_letters.add(user_guess)
 
                 if user_guess in word_letters:
-
                     for i, letter in enumerate(word):
                         if letter == user_guess:
                             display_word[i] = user_guess
@@ -89,7 +90,10 @@ def run_game(word):
                         break 
                 else:
                     lives -= 1
-                    print(f'Sorry, {user_guess} is not in the word.')
+                    if lives > 0:
+                        print(f'Sorry, {user_guess} is not in the word.')
+                    else:
+                        print(visual_hangman_lives[lives])
 
         elif len(user_guess) == len(word) and user_guess.isalpha():
             if user_guess == word:
@@ -97,7 +101,10 @@ def run_game(word):
                 break
             else:
                 lives -= 1
-                print(f'Sorry, "{user_guess}" is not the correct word.')
+                if lives > 0:
+                    print(f'Sorry, "{user_guess}" is not the correct word.')
+                else:
+                    print(visual_hangman_lives[lives])
         
         else:
             print("Invalid input. Please enter a single letter or the full word.")
