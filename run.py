@@ -65,13 +65,13 @@ def run_game(word):
     print("Let's play Hangman!\n")
 
     while len(word_letters) > 0 and lives > 0:
-        print(visual_hangman_lives[lives])
-
+        #print(visual_hangman_lives[lives])
         print('Current word:', ' '.join(display_word)) 
         print('\n')
         print(f"You have {lives} attempts remaining.\n")
 
         user_guess = input("Guess a letter or the full word: ").upper()
+        
 
         if len(user_guess) == 1 and user_guess.isalpha():
             if user_guess in guessed_letters:
@@ -90,10 +90,8 @@ def run_game(word):
                         break 
                 else:
                     lives -= 1
-                    if lives > 0:
-                        print(f'Sorry, {user_guess} is not in the word.')
-                    else:
-                        print(visual_hangman_lives[lives])
+                    print(f'Sorry, {user_guess} is not in the word.')
+                    print(visual_hangman_lives[lives])
 
         elif len(user_guess) == len(word) and user_guess.isalpha():
             if user_guess == word:
@@ -101,16 +99,15 @@ def run_game(word):
                 break
             else:
                 lives -= 1
-                if lives > 0:
-                    print(f'Sorry, "{user_guess}" is not the correct word.')
-                else:
-                    print(visual_hangman_lives[lives])
+                print(f'Sorry, "{user_guess}" is not the correct word.')
+                print(visual_hangman_lives[lives])
         
         else:
             print("Invalid input. Please enter a single letter or the full word.")
     
     if lives == 0:
-        print(f"Game Over! The correct word was: {word}")
+        print(visual_hangman_lives[lives])
+        print(f"Game Over! The correct word was: {word}\n")
     
     user_choice = play_again_menu()
 
