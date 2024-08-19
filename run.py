@@ -105,6 +105,21 @@ def run_game(word):
     
     if lives == 0:
         print(f"Game Over! The correct word was: {word}")
+
+def play_again_menu():
+    """
+    Prompts the user to choose whether they want to play again or exit.
+    Options: "Play Again", "Exit".
+    Returns the user's choice as a string.
+    """
+    print("What would you like to do next?\n")
+    options = ["Play Again", "Exit"]
+    terminal_menu = TerminalMenu(options)
+    menu_entry_index = terminal_menu.show() 
+    user_selection = options[menu_entry_index]
+    print(f"You have selected {options[menu_entry_index]}!\n")
+
+    return user_selection
                 
 
        
