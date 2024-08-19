@@ -54,9 +54,9 @@ def get_word(user_selection):
 def run_game(word):
     """
     The main game loop for Hangman.
-    Converts the random word into a string of letters.
-    Stores user guesses.
-    Display the word as underscores initially.
+    Displays the word as underscores, handles user guesses, updates the display, 
+    and tracking lives. The game ends when the player either guesses the word 
+    correctly or runs out of lives.
     """
     word_letters = set(word)
     guessed_letters = set()
@@ -86,7 +86,7 @@ def run_game(word):
                     word_letters.remove(user_guess)
 
                     if not word_letters:
-                        print(f"Yay! You correctly guessed the word: {''.join(display_word)}")
+                        print(f"You Win! You correctly guessed the word: {''.join(display_word)}")
                         break 
                 else:
                     lives -= 1
