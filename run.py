@@ -102,6 +102,9 @@ def run_game(word):
         
         else:
             print("Invalid input. Please enter a single letter or the full word.")
+    
+    if lives == 0:
+        print(f"Game Over! The correct word was: {word}")
                 
 
        
