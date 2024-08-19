@@ -140,7 +140,7 @@ def play_again_menu():
 def main():
     display_instructions()
     user_selection = select_difficulty()
-    get_word(user_selection)
-    run_game(get_word(user_selection))
+    word = get_word(user_selection)
+    run_game(word)
 
 main()
