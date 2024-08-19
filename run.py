@@ -99,6 +99,9 @@ def run_game(word):
             else:
                 lives -= 1
                 print(f'Sorry, "{user_guess}" is not the correct word.')
+        
+        else:
+            print("Invalid input. Please enter a single letter or the full word.")
                 
 
        
