@@ -1,11 +1,9 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
 import random
 import string
 import sys
 from words import easy_words, medium_words, hard_words
 from simple_term_menu import TerminalMenu
+from hangman_visuals import visual_hangman_lives
 
 
 def display_instructions():
@@ -132,24 +130,10 @@ def play_again_menu():
     return user_selection
                 
 
-       
-
-                
-     
-
-
-
-
-
 def main():
     display_instructions()
     user_selection = select_difficulty()
     get_word(user_selection)
     run_game(get_word(user_selection))
-    
-    
-    
-
-
 
 main()
