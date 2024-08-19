@@ -67,6 +67,7 @@ def run_game(word):
 
     while len(word_letters) > 0 and lives > 0:
        print('Current word:', ' '.join(display_word)) 
+       print('\n')
        print(f"You have {lives} attempts remaining.\n")
 
        user_guess = input("Guess a letter or the full word: ").upper()
@@ -76,8 +77,22 @@ def run_game(word):
                 print(f'You have already guessed the letter "{user_guess}". Please try again.') 
             else:
                 guessed_letters.add(user_guess)
+
+                if user_guess in word_letters:
+
+                    for i, letter in enumerate(word):
+                        if letter == user_guess:
+                            display_word[i] = user_guess
+                    word_letters.remove(user_guess)
+
+                    if not word_letters:
+                        print(f"Yay! You correctly guessed the word: {''.join(display_word)}")
+                else:
+                    lives -= 1
+                    print(f'Sorry, {user_guess} is not in the word.')
+            
                 
-       lives -= 1
+     
 
 
 
