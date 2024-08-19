@@ -3,6 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import random
 import string
+import sys
 from words import easy_words, medium_words, hard_words
 from simple_term_menu import TerminalMenu
 
@@ -105,6 +106,15 @@ def run_game(word):
     
     if lives == 0:
         print(f"Game Over! The correct word was: {word}")
+    
+    user_choice = play_again_menu()
+
+    if user_choice == "Play Again":
+        main()
+    else:
+        print("Thank you for playing Hangman! Goodbye!")
+        sys.exit()
+
 
 def play_again_menu():
     """
