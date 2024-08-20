@@ -1,22 +1,25 @@
 import random
 import string
 import sys
-from words import easy_words, medium_words, hard_words
 from simple_term_menu import TerminalMenu
+from words import easy_words, medium_words, hard_words
 from hangman_visuals import visual_hangman_lives
 
 
 def display_instructions():
-    print("Welcome to Hangman!")
-    print("Instructions:")
-    print("1. You will be asked to choose a difficulty level: Easy, Medium, or Hard.")
-    print("2. A word will be chosen based on your difficulty choice.")
-    print("3. You have 7 attempts to guess the letters in the word.")
-    print("4. For each correct guess, the letter will be revealed in the word.")
-    print("5. If you guess incorrectly, you will lose an attempt.")
-    print("6. The game ends when you guess the word correctly or run out of attempts.")
-    print("7. After the game ends, you can choose to play again or exit.")
-    print("\nGood luck!\n")
+    print("""\
+Welcome to Hangman!
+Instructions:
+1. Choose a difficulty level: Easy, Medium, or Hard.
+2. A word will be selected based on your chosen difficulty.
+3. You have 7 attempts to guess the letters in the word.
+4. Each correct letter guessed will be revealed in the word.
+5. You can also attempt to guess the entire word at any time.
+6. Each incorrect guess costs an attempt and draws part of the Hangman.
+7. The game ends when you guess the word or run out of attempts.
+
+Try to guess the word before the Hangman is complete. Good luck!
+""")
 
 def select_difficulty():
     """
@@ -36,8 +39,9 @@ def select_difficulty():
 def get_word(user_selection):
     """
     This function returns the word list based on the selected difficulty level.
-    It takes the user_selection argument, which can be "Easy", "Medium", or "Hard",
-    and maps it to the corresponding word list. Chooses a random word from the list in uppercase."
+    It takes the user_selection argument, which can be 
+    "Easy", "Medium", or "Hard", and maps it to the corresponding word list. 
+    Chooses a random word from the list in uppercase."
     """
     word_lists = {
         "Easy": easy_words,
@@ -53,9 +57,9 @@ def get_word(user_selection):
 def run_game(word):
     """
     The main game loop for Hangman.
-    Displays the word as underscores, handles user guesses, updates the display, 
-    and tracking lives. The game ends when the player either guesses the word 
-    correctly or runs out of lives.
+    Displays the word as underscores, handles user guesses, 
+    updates the display, and tracking lives. The game ends when the player 
+    either guesses the word correctly or runs out of lives.
     """
     word_letters = set(word)
     guessed_letters = set()
@@ -75,7 +79,8 @@ def run_game(word):
 
         if len(user_guess) == 1 and user_guess.isalpha():
             if user_guess in guessed_letters:
-                print(f'You have already guessed the letter "{user_guess}". Please try again.') 
+                print(f'You have already guessed the letter "{user_guess}". '
+                "Please try again.") 
             else:
                 guessed_letters.add(user_guess)
 
@@ -86,7 +91,8 @@ def run_game(word):
                     word_letters.remove(user_guess)
 
                     if not word_letters:
-                        print(f"You Win! You correctly guessed the word: {''.join(display_word)}")
+                        print(f"You Win! You correctly guessed the word: "
+                        f"{''.join(display_word)}")
                         break 
                 else:
                     lives -= 1
@@ -103,7 +109,8 @@ def run_game(word):
                 print(visual_hangman_lives[lives])
         
         else:
-            print("Invalid input. Please enter a single letter or the full word.")
+            print("Invalid input. Please enter a single letter "
+            "or the full word.")
     
     if lives == 0:
         print(visual_hangman_lives[lives])
