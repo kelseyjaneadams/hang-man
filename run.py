@@ -157,9 +157,31 @@ def play_again_menu():
                 
 
 def main():
-    display_instructions()
+    """
+    The main entry point for the Hangman game.
+    Displays the main menu with options to view instructions, start the game,
+    or exit the program. Continuously runs the main menu until the player
+    chooses to exit.
+    """
+    while True:
+        user_selection = main_menu()
+
+        if user_selection == "How to Play":
+            display_instructions()
+        elif user_selection == "Start Game":
+            user_selection = select_difficulty()
+            word = get_word(user_selection)
+            run_game(word)
+        elif user_selection == "Exit":
+            print("Thank you for playing Hangman! Goodbye!")
+            sys.exit()
+
+
+
+
+    """display_instructions()
     user_selection = select_difficulty()
     word = get_word(user_selection)
-    run_game(word)
+    run_game(word)"""
 
 main()
