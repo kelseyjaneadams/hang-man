@@ -6,6 +6,21 @@ from words import easy_words, medium_words, hard_words
 from hangman_visuals import visual_hangman_lives
 
 
+def main_menu():
+    """
+    Displays the main menu with options to view instructions, 
+    start the game or exit. Returns the user's choice as a string.
+    """
+    print("Welcome to Hangman!")
+    options = ["How to Play", "Start Game", "Exit"]
+    terminal_menu = TerminalMenu(options)
+    menu_entry_index = terminal_menu.show() 
+    user_selection = options[menu_entry_index]
+    print(f"You have selected {options[menu_entry_index]}!\n")
+
+    return user_selection
+    
+
 def display_instructions():
     print("""\
 Welcome to Hangman!
