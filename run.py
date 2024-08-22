@@ -105,8 +105,8 @@ def run_game(word):
 
         if len(user_guess) == 1 and user_guess.isalpha():
             if user_guess in guessed_letters:
-                print(f'You have already guessed the letter "{user_guess}". '
-                "Please try again.") 
+                print(Fore.RED + f'You have already guessed the letter "{user_guess}". '
+                "Please try again." + Style.RESET_ALL) 
             else:
                 guessed_letters.add(user_guess)
 
@@ -122,7 +122,7 @@ def run_game(word):
                         break 
                 else:
                     lives -= 1
-                    print(f'Sorry, {user_guess} is not in the word.')
+                    
                     print(visual_hangman_lives[lives])
 
         elif len(user_guess) == len(word) and user_guess.isalpha():
