@@ -1,6 +1,7 @@
 import random
 import string
 import sys
+from colorama import Fore, Back, Style
 from simple_term_menu import TerminalMenu
 from words import easy_words, medium_words, hard_words
 from hangman_visuals import visual_hangman_lives
@@ -116,8 +117,8 @@ def run_game(word):
                     word_letters.remove(user_guess)
 
                     if not word_letters:
-                        print(f"You Win! You correctly guessed the word: "
-                        f"{''.join(display_word)}")
+                        print(Back.GREEN + f"You Win! The word was: "
+                        f"{word}" + Style.RESET_ALL)
                         break 
                 else:
                     lives -= 1
@@ -126,7 +127,8 @@ def run_game(word):
 
         elif len(user_guess) == len(word) and user_guess.isalpha():
             if user_guess == word:
-                print(f"You Win! You've correctly guessed the word: {word}")
+                print(Back.GREEN + f"You Win! The word was: "
+                f"{word}" + Style.RESET_ALL)
                 break
             else:
                 lives -= 1
@@ -134,8 +136,8 @@ def run_game(word):
                 print(visual_hangman_lives[lives])
         
         else:
-            print("Invalid input. Please enter a single letter "
-            "or the full word.")
+            print(Fore.RED + "INVALID INPUT. Please enter a single letter "
+            "or the full word." + Style.RESET_ALL)
     
     if lives == 0:
         print(visual_hangman_lives[lives])
