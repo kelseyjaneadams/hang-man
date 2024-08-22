@@ -1,12 +1,10 @@
 import random
 import string
 import sys
-from colorama import init, Fore, Back, Style
 from simple_term_menu import TerminalMenu
 from words import easy_words, medium_words, hard_words
 from hangman_visuals import visual_hangman_lives
 
-init()
 
 def main_menu():
     """
@@ -19,7 +17,7 @@ def main_menu():
     options = ["How to Play", "Start Game", "Exit"]
     terminal_menu = TerminalMenu(
         options,
-        menu_highlight_style=("bg_green",),  # Apply red background to highlighted options
+        menu_highlight_style=("bg_green",),  
         menu_cursor_style=("fg_green",)
         )
     menu_entry_index = terminal_menu.show() 
@@ -52,7 +50,11 @@ def select_difficulty():
     """
     print("Please select your difficulty\n")
     options = ["Easy", "Medium", "Hard"]
-    terminal_menu = TerminalMenu(options)
+    terminal_menu = TerminalMenu(
+        options,
+        menu_highlight_style=("bg_green",),  
+        menu_cursor_style=("fg_green",)
+        )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
     print(f"You have selected {options[menu_entry_index]}!\n")
