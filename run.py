@@ -158,7 +158,11 @@ def play_again_menu():
     """
     print("What would you like to do next?\n")
     options = ["Play Again", "Exit"]
-    terminal_menu = TerminalMenu(options)
+    terminal_menu = TerminalMenu(
+        options,
+        menu_highlight_style=("bg_green",),  
+        menu_cursor_style=("fg_green",)
+        )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
     print(f"You have selected {options[menu_entry_index]}!\n")
@@ -187,11 +191,5 @@ def main():
             sys.exit()
 
 
-
-
-    """display_instructions()
-    user_selection = select_difficulty()
-    word = get_word(user_selection)
-    run_game(word)"""
 
 main()
