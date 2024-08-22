@@ -1,19 +1,27 @@
 import random
 import string
 import sys
+from colorama import init, Fore, Back, Style
 from simple_term_menu import TerminalMenu
 from words import easy_words, medium_words, hard_words
 from hangman_visuals import visual_hangman_lives
 
+init()
 
 def main_menu():
     """
     Displays the main menu with options to view instructions, 
     start the game or exit. Returns the user's choice as a string.
     """
-    print("Welcome to Hangman!")
+    print("\n")
+    print("Welcome to Hangman!\n")
+
     options = ["How to Play", "Start Game", "Exit"]
-    terminal_menu = TerminalMenu(options)
+    terminal_menu = TerminalMenu(
+        options,
+        menu_highlight_style=("bg_green",),  # Apply red background to highlighted options
+        menu_cursor_style=("fg_green",)
+        )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
     print(f"You have selected {options[menu_entry_index]}!\n")
@@ -84,7 +92,7 @@ def run_game(word):
     print("Let's play Hangman!\n")
 
     while len(word_letters) > 0 and lives > 0:
-        #print(visual_hangman_lives[lives])
+        print(visual_hangman_lives[lives])
         print('Current word:', ' '.join(display_word)) 
         print('\n')
         print(f"You have {lives} attempts remaining.\n")
