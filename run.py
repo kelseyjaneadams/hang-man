@@ -122,7 +122,7 @@ def run_game(word):
                         break 
                 else:
                     lives -= 1
-                    
+                    print(Fore.YELLOW + f'Sorry, {user_guess} is not in the word.' + Style.RESET_ALL)
                     print(visual_hangman_lives[lives])
 
         elif len(user_guess) == len(word) and user_guess.isalpha():
@@ -132,7 +132,7 @@ def run_game(word):
                 break
             else:
                 lives -= 1
-                print(f'Sorry, "{user_guess}" is not the correct word.')
+                print(Fore.YELLOW + f'Sorry, "{user_guess}" is not the correct word.' + Style.RESET_ALL)
                 print(visual_hangman_lives[lives])
         
         else:
