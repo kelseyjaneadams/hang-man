@@ -95,7 +95,6 @@ def run_game(word):
     print("Let's play Hangman!\n")
 
     while len(word_letters) > 0 and lives > 0:
-        print(visual_hangman_lives[lives])
         print('Current word:', ' '.join(display_word)) 
         print('\n')
         print(f"You have {lives} attempts remaining.\n")
@@ -142,7 +141,7 @@ def run_game(word):
     if lives == 0:
         print(visual_hangman_lives[lives])
         print(Back.RED + Fore.WHITE + f"You Loose! The correct word was: {word}" + Style.RESET_ALL + "\n")
-    
+
     user_choice = play_again_menu()
 
     if user_choice == "Play Again":
