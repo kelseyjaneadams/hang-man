@@ -15,12 +15,11 @@ def main_menu():
     print(f""""
                             Welcome to Hangman!
     """)
-    
 
     options = ["How to Play", "Start Game", "Exit"]
     terminal_menu = TerminalMenu(
         options,
-        menu_highlight_style=("bg_green",),  
+        menu_highlight_style=("bg_green",),
         menu_cursor_style=("fg_green",)
     )
     menu_entry_index = terminal_menu.show()
@@ -34,7 +33,9 @@ You have selected {Back.GREEN}{Fore.BLACK}{user_selection}!{Style.RESET_ALL}
 
 
 def display_instructions():
-    
+    """
+    Dispaly game instructions for the user.
+    """
     print("""\
 Welcome to Hangman!
 Instructions:
@@ -49,6 +50,7 @@ Instructions:
 Try to guess the word before the Hangman is complete. Good luck!
 """)
 
+
 def select_difficulty():
     """
     Prompts the user to select a difficulty level from a terminal menu.
@@ -59,10 +61,10 @@ def select_difficulty():
     options = ["Easy", "Medium", "Hard"]
     terminal_menu = TerminalMenu(
         options,
-        menu_highlight_style=("bg_green",),  
+        menu_highlight_style=("bg_green",), 
         menu_cursor_style=("fg_green",)
     )
-    menu_entry_index = terminal_menu.show() 
+    menu_entry_index = terminal_menu.show()
     user_selection = options[menu_entry_index]
 
     print(f"""
@@ -75,8 +77,8 @@ You have selected {Back.GREEN}{Fore.BLACK}{user_selection}!{Style.RESET_ALL}
 def get_word(user_selection):
     """
     This function returns the word list based on the selected difficulty level.
-    It takes the user_selection argument, which can be 
-    "Easy", "Medium", or "Hard", and maps it to the corresponding word list. 
+    It takes the user_selection argument, which can be
+    "Easy", "Medium", or "Hard", and maps it to the corresponding word list.
     Chooses a random word from the list in uppercase."
     """
     word_lists = {
@@ -87,14 +89,15 @@ def get_word(user_selection):
 
     selected_word_list = word_lists[user_selection]
     word = random.choice(selected_word_list)
-    
+
     return word.upper()
+
 
 def run_game(word):
     """
     The main game loop for Hangman.
-    Displays the word as underscores, handles user guesses, 
-    updates the display, and tracking lives. The game ends when the player 
+    Displays the word as underscores, handles user guesses,
+    updates the display, and tracking lives. The game ends when the player
     either guesses the word correctly or runs out of lives.
     """
     word_letters = set(word)
@@ -106,7 +109,7 @@ def run_game(word):
 
     while len(word_letters) > 0 and lives > 0:
         print(f"""
-        
+
 Current word: {' '.join(display_word)}
 
 You have {lives} attempts remaining.
@@ -120,11 +123,10 @@ You have {lives} attempts remaining.
 
         user_guess = input("Guess a letter or the full word: ").upper()
 
-
         if len(user_guess) == 1 and user_guess.isalpha():
             if user_guess in guessed_letters:
                 print(f"""
-{Fore.RED}You have already guessed the letter "{user_guess}". 
+{Fore.RED}You have already guessed the letter "{user_guess}".
 Please try again.{Style.RESET_ALL}
 """)
             else:
@@ -140,7 +142,7 @@ Please try again.{Style.RESET_ALL}
                         print(f"""
 {Back.GREEN}You Win! The word was: {word}{Style.RESET_ALL}
 """)
-                        break 
+                        break
                 else:
                     lives -= 1
                     print(f"""
@@ -160,10 +162,10 @@ Please try again.{Style.RESET_ALL}
 {Fore.YELLOW}Sorry, "{user_guess}" is not the correct word.{Style.RESET_ALL}
 """)
                 print(visual_hangman_lives[lives])
-        
+
         else:
             print(f"""
-{Fore.RED}INVALID INPUT. Please enter a single letter 
+{Fore.RED}INVALID INPUT. Please enter a single letter
 or the full word.{Style.RESET_ALL}
 """)
 
@@ -191,10 +193,10 @@ def play_again_menu():
     options = ["Play Again", "Exit"]
     terminal_menu = TerminalMenu(
         options,
-        menu_highlight_style=("bg_green",),  
+        menu_highlight_style=("bg_green",),
         menu_cursor_style=("fg_green",)
     )
-    menu_entry_index = terminal_menu.show() 
+    menu_entry_index = terminal_menu.show()
     user_selection = options[menu_entry_index]
 
     print(f"""
