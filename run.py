@@ -139,7 +139,6 @@ def run_game(word):
             "or the full word." + Style.RESET_ALL)
     
     if lives == 0:
-        print(visual_hangman_lives[lives])
         print(Back.RED + Fore.WHITE + f"You Loose! The correct word was: {word}" + Style.RESET_ALL + "\n")
 
     user_choice = play_again_menu()
