@@ -107,8 +107,14 @@ def run_game(word):
         print('\n')
         print(f"You have {lives} attempts remaining.\n")
 
+        if guessed_letters:
+            print(f"""
+{Fore.BLUE}Already guessed letters: {" ".join(sorted(guessed_letters))}
+{Style.RESET_ALL}
+""")
+
         user_guess = input("Guess a letter or the full word: ").upper()
-        
+
 
         if len(user_guess) == 1 and user_guess.isalpha():
             if user_guess in guessed_letters:
