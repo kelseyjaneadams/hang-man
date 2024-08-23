@@ -9,27 +9,31 @@ from hangman_visuals import visual_hangman_lives
 
 def main_menu():
     """
-    Displays the main menu with options to view instructions, 
+    Displays the main menu with options to view instructions,
     start the game or exit. Returns the user's choice as a string.
     """
     print("\n")
     print("Welcome to Hangman!\n")
+    
 
     options = ["How to Play", "Start Game", "Exit"]
     terminal_menu = TerminalMenu(
         options,
         menu_highlight_style=("bg_green",),  
         menu_cursor_style=("fg_green",)
-        )
-    menu_entry_index = terminal_menu.show() 
+    )
+    menu_entry_index = terminal_menu.show()
     user_selection = options[menu_entry_index]
 
-    print(f"You have selected " + Back.GREEN + Fore.BLACK + f"{user_selection}!" + Style.RESET_ALL + "\n")
+    print(f"""
+You have selected {Back.GREEN}{Fore.BLACK}{user_selection}!{Style.RESET_ALL}
+""")
 
     return user_selection
-    
+
 
 def display_instructions():
+    
     print("""\
 Welcome to Hangman!
 Instructions:
@@ -60,7 +64,9 @@ def select_difficulty():
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
 
-    print(f"You have selected " + Back.GREEN + Fore.BLACK + f"{user_selection}!" + Style.RESET_ALL + "\n")
+    print(f"""
+You have selected {Back.GREEN}{Fore.BLACK}{user_selection}!{Style.RESET_ALL}
+""")
 
     return user_selection
 
@@ -106,8 +112,10 @@ def run_game(word):
 
         if len(user_guess) == 1 and user_guess.isalpha():
             if user_guess in guessed_letters:
-                print(Fore.RED + f'You have already guessed the letter "{user_guess}". '
-                "Please try again." + Style.RESET_ALL) 
+                print(f"""
+{Fore.RED}You have already guessed the letter "{user_guess}". 
+Please try again.{Style.RESET_ALL}
+""")
             else:
                 guessed_letters.add(user_guess)
 
@@ -118,30 +126,40 @@ def run_game(word):
                     word_letters.remove(user_guess)
 
                     if not word_letters:
-                        print(Back.GREEN + f"You Win! The word was: "
-                        f"{word}" + Style.RESET_ALL)
+                        print(f"""
+{Back.GREEN}You Win! The word was: {word}{Style.RESET_ALL}
+""")
                         break 
                 else:
                     lives -= 1
-                    print(Fore.YELLOW + f'Sorry, {user_guess} is not in the word.' + Style.RESET_ALL)
+                    print(f"""
+{Fore.YELLOW}Sorry, {user_guess} is not in the word.{Style.RESET_ALL}
+""")
                     print(visual_hangman_lives[lives])
 
         elif len(user_guess) == len(word) and user_guess.isalpha():
             if user_guess == word:
-                print(Back.GREEN + f"You Win! The word was: "
-                f"{word}" + Style.RESET_ALL)
+                print(f"""
+{Back.GREEN}You Win! The word was: {word}{Style.RESET_ALL}
+""")
                 break
             else:
                 lives -= 1
-                print(Fore.YELLOW + f'Sorry, "{user_guess}" is not the correct word.' + Style.RESET_ALL)
+                print(f"""
+{Fore.YELLOW}Sorry, "{user_guess}" is not the correct word.{Style.RESET_ALL}
+""")
                 print(visual_hangman_lives[lives])
         
         else:
-            print(Fore.RED + "INVALID INPUT. Please enter a single letter "
-            "or the full word." + Style.RESET_ALL)
-    
+            print(f"""
+{Fore.RED}INVALID INPUT. Please enter a single letter 
+or the full word.{Style.RESET_ALL}
+""")
+
     if lives == 0:
-        print(Back.RED + Fore.WHITE + f"You Loose! The correct word was: {word}" + Style.RESET_ALL + "\n")
+        print(f"""
+{Back.RED}{Fore.WHITE}You Lose! The correct word was: {word}{Style.RESET_ALL}
+""")
 
     user_choice = play_again_menu()
 
@@ -164,11 +182,13 @@ def play_again_menu():
         options,
         menu_highlight_style=("bg_green",),  
         menu_cursor_style=("fg_green",)
-        )
+    )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
-    
-    print(f"You have selected " + Back.GREEN + Fore.BLACK + f"{user_selection}!" + Style.RESET_ALL + "\n")
+
+    print(f"""
+You have selected {Back.GREEN}{Fore.BLACK}{user_selection}!{Style.RESET_ALL}
+""")
 
     return user_selection
 
