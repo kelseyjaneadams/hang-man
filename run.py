@@ -226,4 +226,6 @@ def main():
             print("Thank you for playing Hangman! Goodbye!")
             sys.exit()
 
-main()
+
+if __name__ == "__main__":
+    main()
