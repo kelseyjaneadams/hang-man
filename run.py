@@ -23,7 +23,8 @@ def main_menu():
         )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
-    print(f"You have selected {options[menu_entry_index]}!\n")
+
+    print(f"You have selected " + Back.GREEN + Fore.BLACK + f"{user_selection}!" + Style.RESET_ALL + "\n")
 
     return user_selection
     
@@ -58,7 +59,8 @@ def select_difficulty():
         )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
-    print(f"You have selected {options[menu_entry_index]}!\n")
+
+    print(f"You have selected " + Back.GREEN + Fore.BLACK + f"{user_selection}!" + Style.RESET_ALL + "\n")
 
     return user_selection
 
@@ -165,10 +167,11 @@ def play_again_menu():
         )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
-    print(f"You have selected {options[menu_entry_index]}!\n")
+    
+    print(f"You have selected " + Back.GREEN + Fore.BLACK + f"{user_selection}!" + Style.RESET_ALL + "\n")
 
     return user_selection
-                
+
 
 def main():
     """
@@ -189,7 +192,5 @@ def main():
         elif user_selection == "Exit":
             print("Thank you for playing Hangman! Goodbye!")
             sys.exit()
-
-
 
 main()
