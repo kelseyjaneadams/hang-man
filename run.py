@@ -12,8 +12,9 @@ def main_menu():
     Displays the main menu with options to view instructions,
     start the game or exit. Returns the user's choice as a string.
     """
-    print("\n")
-    print("Welcome to Hangman!\n")
+    print(f""""
+                            Welcome to Hangman!
+    """)
     
 
     options = ["How to Play", "Start Game", "Exit"]
@@ -60,7 +61,7 @@ def select_difficulty():
         options,
         menu_highlight_style=("bg_green",),  
         menu_cursor_style=("fg_green",)
-        )
+    )
     menu_entry_index = terminal_menu.show() 
     user_selection = options[menu_entry_index]
 
@@ -69,6 +70,7 @@ You have selected {Back.GREEN}{Fore.BLACK}{user_selection}!{Style.RESET_ALL}
 """)
 
     return user_selection
+
 
 def get_word(user_selection):
     """
@@ -103,9 +105,12 @@ def run_game(word):
     print("Let's play Hangman!\n")
 
     while len(word_letters) > 0 and lives > 0:
-        print('Current word:', ' '.join(display_word)) 
-        print('\n')
-        print(f"You have {lives} attempts remaining.\n")
+        print(f"""
+        
+Current word: {' '.join(display_word)}
+
+You have {lives} attempts remaining.
+""")
 
         if guessed_letters:
             print(f"""
