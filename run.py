@@ -61,7 +61,7 @@ def select_difficulty():
     options = ["Easy", "Medium", "Hard"]
     terminal_menu = TerminalMenu(
         options,
-        menu_highlight_style=("bg_green",), 
+        menu_highlight_style=("bg_green",),
         menu_cursor_style=("fg_green",)
     )
     menu_entry_index = terminal_menu.show()

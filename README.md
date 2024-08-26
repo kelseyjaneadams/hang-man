@@ -171,6 +171,10 @@ If the user selects the "Exit" option from the main menu or the play-again menu,
 
 <img src="assets/images/exitgame-hm.png">
 
+### Flowchart
+
+<img src="assets/images/hangmanlogic.png">
+
 ### Technologies Used
 
 - [Python 3.8.5](https://www.python.org/downloads/release/python-385/): used to anchor the project and direct all application behavior
